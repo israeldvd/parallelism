@@ -23,9 +23,9 @@ void run_semaphore(){
      this sem has initial value of 1 (one running thread)
   */
   int success;
-  success = sem_init(&simple_semaphore, 0, 1);
+  success = sem_init(&simple_semaphore, 0, 1)+1;
 
-  cout << (success+1?"Success running semaphore!":"Something went wrong with it");
+  cout << (success?"Success running semaphore!":"Something went wrong with it");
 }
 
 int main(){
