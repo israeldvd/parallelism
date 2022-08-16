@@ -9,8 +9,17 @@ sem_t simple_semaphore;
 
 using namespace std; //takes away the need for using "std::"
 
-int main(){
+void mutex(){
+  //main thread waits both
+  pthread_join(thread_1, NULL);
+  pthread_join(thread_2, NULL);
+}
 
+void run_semaphore(){
+  sem_init()
+}
+
+int main(){
 
   return 0;
 }
