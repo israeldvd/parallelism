@@ -1,5 +1,5 @@
 #include <iostream>
-#include <p.thread>
+#include <pthread.h>
 #include <semaphore.h>
 
 pthread_t thread_1;
@@ -25,10 +25,10 @@ void run_semaphore(){
   int success;
   success = sem_init(&simple_semaphore, 0, 1);
 
-  cout << success?"Sucess running semphore!":"Something went wrong with it";
+  cout << (success+1?"Success running semaphore!":"Something went wrong with it");
 }
 
 int main(){
-
+  run_semaphore();
   return 0;
 }
