@@ -7,7 +7,8 @@ pthread_t thread_2;
 pthread_t thread_3;
 sem_t simple_semaphore;
 
-using namespace std; //takes away the need for using "std::"
+//take away the need for using "std::"
+using namespace std;
 
 void mutex(){
   //main thread waits both
@@ -16,7 +17,15 @@ void mutex(){
 }
 
 void run_semaphore(){
-  sem_init()
+  //initialize a semaphore with value = 1 (one running) and allows 1
+  /* address: pointed by sem.
+     pshared = 0 thread shares a process
+     this sem has initial value of 1 (one running thread)
+  */
+  int success;
+  success = sem_init(&simple_semaphore, 0, 1);
+
+  cout << success?"Sucess running semphore!":"Something went wrong with it";
 }
 
 int main(){
