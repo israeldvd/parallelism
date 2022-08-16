@@ -4,7 +4,6 @@
 
 pthread_t thread_1;
 pthread_t thread_2;
-pthread_t thread_3;
 sem_t simple_semaphore;
 
 //take away the need for using "std::"
@@ -28,7 +27,28 @@ void run_semaphore(){
   cout << (success?"Success running semaphore!":"Something went wrong with it");
 }
 
+void* mutex_sum(void *p){
+  sem_wait(&simple_semaphore);
+  cout << 1+2;
+  cout << "\n";
+  sem_post(&simple_semaphore);
+}
+
+void* mutex_subtract(void *p){
+  sem_wait(&simple_semaphore);
+  cout << 90-2-1;
+  cout << "\n";
+  sem_post(&simple_semaphore);
+}
+
 int main(){
+  /* Initilize both threads that were created*/
+  pthread_create(&thread_1, NULL, mutex_sum, NULL);
+  pthread_create(&thread_1, NULL, mutex_subtract, NULL);
+
+  /* alternatives */
   run_semaphore();
+  //mutex();
+
   return 0;
 }
